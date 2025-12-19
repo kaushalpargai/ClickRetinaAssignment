@@ -252,8 +252,9 @@ fun SocialLinksRow(
         
         Text(
             text = "•",
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
-            fontSize = 12.sp
+            color = Color(0xFF5C6BC0),
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
         
         Spacer(modifier = Modifier.width(8.dp))
@@ -273,8 +274,9 @@ fun SocialLinksRow(
         
         Text(
             text = "•",
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.4f),
-            fontSize = 12.sp
+            color = Color(0xFF5C6BC0),
+            fontSize = 18.sp,
+            fontWeight = FontWeight.Bold
         )
         
         Spacer(modifier = Modifier.width(8.dp))
