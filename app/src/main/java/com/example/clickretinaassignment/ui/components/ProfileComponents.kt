@@ -5,13 +5,18 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.GenericShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -28,20 +33,44 @@ fun ProfileHeader(
     username: String,
     modifier: Modifier = Modifier
 ) {
+    val curvedShape = GenericShape { size, _ ->
+        val width = size.width
+        val height = size.height
+        
+        moveTo(0f, 0f)
+        lineTo(width, 0f)
+        lineTo(width, height * 0.75f)
+        
+        cubicTo(
+            width * 0.75f, height,
+            width * 0.25f, height,
+            0f, height * 0.75f
+        )
+        
+        close()
+    }
+    
     Box(
         modifier = modifier
             .fillMaxWidth()
             .height(200.dp)
-            .background(
-                brush = Brush.linearGradient(
-                    colors = listOf(
-                        Color(0xFF4A148C),
-                        Color(0xFF1A237E),
-                        Color(0xFF0D47A1)
+    ) {
+        Box(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+                .clip(curvedShape)
+                .background(
+                    brush = Brush.linearGradient(
+                        colors = listOf(
+                            Color(0xFF4A148C),
+                            Color(0xFF1A237E),
+                            Color(0xFF0D47A1)
+                        )
                     )
                 )
-            )
-    ) {
+        )
+        
         Box(
             modifier = Modifier
                 .fillMaxWidth()
