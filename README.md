@@ -72,7 +72,7 @@ app/src/main/java/com/example/clickretinaassignment/
 
 The app fetches data from:
 ```
-https://raw.githubusercontent.com/android-assessment/profile/refs/heads/main/data.json
+https://raw.githubusercontent.com/android-assesment/profile/refs/heads/main/data.json
 ```
 
 If the API is unavailable, the app automatically falls back to mock data.
